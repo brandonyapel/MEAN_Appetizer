@@ -14,6 +14,7 @@ Meaning that by clicking on the display for each of the items, allows the user t
 The user will start with $100.
 
 ## Application Example
+
 [Here is an example of an application with only the fruits: https://mighty-ravine-10405.herokuapp.com/](https://mighty-ravine-10405.herokuapp.com/)
 
 ## Items to be sold:
@@ -43,6 +44,7 @@ See the array in the `market.router.js` file. Items are returned by the `/market
 - [ ] Client will check for updates every 8 seconds
 - [ ] Leaderboard page that displays the top 10 users ranked by the most cash on hand
 - [ ] Leaderboard is refreshed every 10 seconds automatically
+- [ ] Add pictures for each of the market items
 
 ### Assumptions
 
@@ -57,6 +59,7 @@ See the array in the `market.router.js` file. Items are returned by the `/market
 - [ ] Leaderboard should take into account current inventory
 - [ ] Market items should be moved from an array into the database
 - [ ] Use Angular Material to layout and style your content
+- [ ] Move code into classes where it makes sense
 - [ ] Add a sell all inventory button
 - [ ] Host on Heroku
 - [ ] Each market item should have a limited inventory

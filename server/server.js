@@ -1,17 +1,17 @@
-var express = require('express');
-var app = express();
-var bodyParser = require('body-parser');
-var path = require('path');
+let express = require('express');
+let app = express();
+let bodyParser = require('body-parser');
+let path = require('path');
 
-var passport = require('./strategies/userStrategy');
-var sessionConfig = require('./modules/session.config');
-var port = process.env.PORT || 5000;
+let passport = require('./strategies/userStrategy');
+let sessionConfig = require('./modules/session.config');
+let port = process.env.PORT || 5000;
 
 // Route includes
-var indexRouter = require('./routes/index.router');
-var userRouter = require('./routes/user.router');
-var registerRouter = require('./routes/register.router');
-var marketRouter = require('./routes/market.router');
+let indexRouter = require('./routes/index.router');
+let userRouter = require('./routes/user.router');
+let registerRouter = require('./routes/register.router');
+let marketRouter = require('./routes/market.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -35,7 +35,7 @@ app.use('/market', marketRouter)
 app.use('/', indexRouter);
 
 //DB Module
-var db = require('./modules/db.config.js');
+let db = require('./modules/db.config.js');
 
 // Listen //
 app.listen(port, function(){

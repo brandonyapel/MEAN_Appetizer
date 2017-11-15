@@ -1,6 +1,6 @@
-myApp.controller('MarketController', ['UserService' ,function(UserService) {
+myApp.controller('MarketController', function(UserService) {
   console.log('MarketController created');
-  var vm = this;
+  let vm = this;
   vm.userService = UserService;
   vm.userObject = UserService.userObject;
-}]);
+});

@@ -1,7 +1,7 @@
-var myApp = angular.module('myApp', ['ngRoute']);
+let myApp = angular.module('myApp', ['ngRoute']);
 
 /// Routes ///
-myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+myApp.config(function($routeProvider, $locationProvider) {
   $locationProvider.hashPrefix('');
   console.log('myApp -- config')
   $routeProvider
@@ -17,21 +17,21 @@ myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $l
       templateUrl: '/views/templates/marketplace.html',
       controller: 'MarketController as mc',
       resolve: {
-        getuser : ['UserService', function(UserService){
+        getuser : function(UserService) {
           return UserService.getuser();
-        }]
+        }
       }
     })
     .when('/leaderboard', {
       templateUrl: '/views/templates/leaderboard.html',
       controller: 'LeaderController as lbc',
       resolve: {
-        getuser : ['UserService', function(UserService){
+        getuser : function(UserService) {
           return UserService.getuser();
-        }]
+        }
       }
     })
     .otherwise({
       redirectTo: 'home'
     });
-}]);
+});

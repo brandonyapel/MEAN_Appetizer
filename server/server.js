@@ -3,7 +3,7 @@ let app = express();
 let bodyParser = require('body-parser');
 let path = require('path');
 
-let passport = require('./strategies/userStrategy');
+let passport = require('./strategies/user.strategy');
 let sessionConfig = require('./modules/session.config');
 let port = process.env.PORT || 5000;
 

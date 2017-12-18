@@ -63,6 +63,9 @@ See the array in the `market.router.js` file. Items are returned by the `/market
 - [ ] Add a sell all inventory button
 - [ ] Host on Heroku
 - [ ] Each market item should have a limited inventory
+- [ ] Convert this project to use a SQL database
+- [ ] Allow users to log in with google (OAuth)
+- [ ] Allow users to reset their password if they lose it
 
 ## Documentation
 

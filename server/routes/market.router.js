@@ -14,21 +14,6 @@ let router = express.Router();
 // As a stretch goal, move this to the database
 let priceChangeObject = require('../modules/price.change.js');
 
-const changeItemPrices = basket => {
-  for(let i =0;i<basket.length;i++){
-    let randomPriceChange = randomNumberGenerator(-.15, .15);
-    basket[i].cost += randomPriceChange;
-    
-  }
-  console.log(basket);
-}
-
-const randomNumberGenerator = (min, max) => {
-  return Number((Math.random()*(max-min)+min).toFixed(2));
-}
-
-// let currentBasketItems = setInterval(function(){changeItemPrices(marketItems)}, 10000);
-
 /**
  * Route serving market items
  * @function

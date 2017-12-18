@@ -71,6 +71,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
+    
 }
 
 li {
@@ -91,4 +92,8 @@ li a {
 li a:hover {
     text-decoration: underline;
     color: #564B3D;
+}
+
+.leader{
+    float: none;
 }

@@ -4,4 +4,6 @@
     <h2>Marketplace</h2>
     <h3 id="welcome" class="lead">Welcome, {{mc.userObject.userName}}! You have ${{mc.userObject.money}} to spend.</h3>
   </div>
+  <div class='items'ng-repeat = "item in mc.itemsArray.list">
+ <p>{{item.name}} Price: {{item.cost}}</p>
 </div>

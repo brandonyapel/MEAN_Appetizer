@@ -92,3 +92,8 @@ li a:hover {
     text-decoration: underline;
     color: #564B3D;
 }
+
+.items{
+    margin: 10px;
+    padding:10px
+}

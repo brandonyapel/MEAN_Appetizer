@@ -3,5 +3,12 @@
   <div class="content">
       
     <h2>Leaderboard</h2>
+    
+    <ol>
+      <li ng-repeat='leader in lbc.leaderArray.list' class="leader">
+       <p>{{leader.username}} {{leader.money}}</p>
+        
+      </li>
+    </ol>
   </div>
 </div>

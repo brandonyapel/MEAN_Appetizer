@@ -12,6 +12,8 @@ myApp.service('UserService', function($http, $location){
         userObject.money = response.data.money;
         userObject.basket = response.data.basket;
         console.log('UserService -- getuser -- User Data: ', userObject.userName);
+        self.userObject = userObject;
+        console.log(self.userObject)
       } else {
         console.log('UserService -- getuser -- failure');
         // user has no session, bounce them back to the login page

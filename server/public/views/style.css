@@ -71,6 +71,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
+    
 }
 
 li {
@@ -93,7 +94,13 @@ li a:hover {
     color: #564B3D;
 }
 
+
 .items{
     margin: 10px;
     padding:10px
 }
+
+.leader{
+    float: none;
+}
+

@@ -102,5 +102,13 @@ li a:hover {
 
 .leader{
     float: none;
+    padding: 12px 45px;
+    border-top: 2px solid #A4B76E;
+    color: #564B3D
+    
+      
 }
 
+.leader:hover { 
+    background-color: #A4B76E;
+}

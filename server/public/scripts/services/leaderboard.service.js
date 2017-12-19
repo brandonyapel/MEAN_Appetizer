@@ -3,7 +3,7 @@ myApp.service('LeaderService', function($http, $location){
     let self = this;
     self.leaderArray = {list: []};
 
-    setInterval(self.getLeaders = function () {
+    setInterval(self.getLeaders = () => {
         // YOUR CODE HERE
         $http({
             method: 'GET',

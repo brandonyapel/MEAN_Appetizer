@@ -19,5 +19,6 @@ self.getItems = () => {
 
 self.getItems();
 let requestUpdatedItems = setInterval(() => {self.getItems()}, 8000)
-})
 
+
+})

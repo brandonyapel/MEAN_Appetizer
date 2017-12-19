@@ -25,6 +25,7 @@ myApp.service('UserService', function($http, $location){
     });
   }
 
+  self.getuser()
   self.logout = () => {
     console.log('UserService -- logout');
     $http.get('/user/logout').then((response) => {

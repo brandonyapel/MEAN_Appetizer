@@ -1,3 +1,5 @@
+// import { setInterval } from "timers";
+
 myApp.service('MarketService', function($http){
     console.log('UserService Loaded');
     let vm = this
@@ -5,7 +7,7 @@ myApp.service('MarketService', function($http){
     vm.itemsArray = { list: [] }
 
 
-self.getItems = function () {
+self.getItems = () => {
   $http({
       method: 'GET',
       url: '/market/items'
@@ -16,6 +18,6 @@ self.getItems = function () {
 };
 
 self.getItems();
-
+let requestUpdatedItems = setInterval(() => {self.getItems()}, 8000)
 })
 

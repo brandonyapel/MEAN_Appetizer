@@ -35,7 +35,7 @@ app.use('/market', marketRouter)
 app.use('/', indexRouter);
 
 //DB Module
-let db = require('./modules/db.config.js');
+//let db = require('./modules/db.config.js');
 
 // Listen //
 app.listen(port, function(){

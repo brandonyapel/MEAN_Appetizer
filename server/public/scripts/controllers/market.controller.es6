@@ -20,8 +20,8 @@ myApp.controller('MarketController', ['UserService', 'MarketService', function (
   ]
 
   setTimeout(mc.calculatePersonalIventory = function () {
-    console.log(mc.userObject)
-    console.log(mc.itemsArray)
+    // console.log(mc.userObject)
+    // console.log(mc.itemsArray)
     console.log('hit the calculate personal inventory function')
     // for (let i = 0; i < mc.personalInventory.length; i++) {
     //   mc.personalInventory[i].count = 0;

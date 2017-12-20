@@ -96,8 +96,9 @@ li a:hover {
 
 
 .items{
-    margin: 10px;
-    padding:10px
+    margin: 5px;
+    padding:5px;
+    display: inline-block;
 }
 
 .leader{
@@ -109,6 +110,11 @@ li a:hover {
       
 }
 
+
+img{
+    zoom: 20%;
+}
 .leader:hover { 
     background-color: #A4B76E;
 }
+

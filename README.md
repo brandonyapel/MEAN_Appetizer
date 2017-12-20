@@ -33,18 +33,23 @@ See the array in the `market.router.js` file. Items are returned by the `/market
 - `npm install`
 - `npm start`
 
+## Screen Shot
+
+![alt text](imagesForReadme/pic1.jpg)
+![alt text](imagesForReadme/pic2.jpg)
+
 ## Base Functionality
 
 > Document your project and your code as you go!
 
 - [x] Ability to register and log in
-- [ ] Display a list of available items to purchase on the Marketplace page
+- [x] Display a list of available items to purchase on the Marketplace page
 - [ ] Ability to buy or sell items available for purchase
-- [ ] Server should randomly change product prices (within a 1 - 15 cent range) every 10 seconds for each product
-- [ ] Client will check for updates every 8 seconds
-- [ ] Leaderboard page that displays the top 10 users ranked by the most cash on hand
-- [ ] Leaderboard is refreshed every 10 seconds automatically
-- [ ] Add pictures for each of the market items
+- [x] Server should randomly change product prices (within a 1 - 15 cent range) every 10 seconds for each product
+- [x] Client will check for updates every 8 seconds
+- [x] Leaderboard page that displays the top 10 users ranked by the most cash on hand
+- [x] Leaderboard is refreshed every 10 seconds automatically
+- [x] Add pictures for each of the market items
 
 ### Assumptions
 
@@ -66,6 +71,13 @@ See the array in the `market.router.js` file. Items are returned by the `/market
 - [ ] Convert this project to use a SQL database
 - [ ] Allow users to log in with google (OAuth)
 - [ ] Allow users to reset their password if they lose it
+
+## Authors
+Paige Schuneman
+Joe Gagliano
+Joe Wales
+Nasir Hussien
+Brandon Yapel
 
 ## Documentation
 

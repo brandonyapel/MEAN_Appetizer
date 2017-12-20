@@ -1,67 +1,93 @@
-let passport = require('passport');
-let localStrategy = require('passport-local').Strategy;
-let User = require('../models/user.model');
+var passport = require('passport');
+var localStrategy = require('passport-local').Strategy;
+var encryptLib = require('../modules/encryption');
+var pool = require('../modules/pool.js');
 
-// Store this user's unique id in the session for later reference
-// Only runs during authentication
-// Stores info on req.session.passport.user
-passport.serializeUser((user, done) => {
-  console.log('userStrategy -- serialized: ', user);
-  done(null, user.id);
+passport.serializeUser(function(user, done) {
+    done(null, user.id);
 });
 
-// Runs on every request after user is authenticated
-// Look up the user's id in the session and use it to find them in the DB for each request
-// result is stored on req.user
-passport.deserializeUser((id, done) => {
-  User.findById(id, function(err, user) {
+passport.deserializeUser(function(id, done) {
+  console.log('called deserializeUser - pg');
+
+  pool.connect(function (err, client, release) {
     if(err) {
+      console.log('connection err ', err);
+      release();
       done(err);
-    }
-    console.log('userStrategy -- deserializeUser');
-    console.log('-----------------------------------------------\ndeserialized: ', user.id);
-    done(null, user);
-  });
+    }else{
+
+    var user = {};
+
+    client.query(`SELECT * FROM users WHERE id = $1`, [id], function(err, result) {
+    
+      // Handle Errors
+      if(err) {
+        console.log('query err ', err);
+        done(err);
+        release();
+      }
+
+      user = result.rows[0];
+      release();
+    
+      if(!user) {
+          // user not found
+          return done(null, false, {message: 'Incorrect credentials.'});
+      } else {
+        // user found
+        console.log('User row ', user);
+        done(null, user);
+      }
+    
+    });
+  }});
 });
 
 // Does actual work of logging in
-// Called by middleware stack
 passport.use('local', new localStrategy({
-  passReqToCallback: true,
-  usernameField: 'username'
-  }, (req, username, password, done) => {
-    // mongoose stuff
-    User.findOne({username: username}, (err, user) => {
-      if(err) {
-        throw err;
-      }
-      console.log('userStrategy -- User.findOne');
-      // user variable passed to us from Mongoose if it found a match to findOne() above
-      if(!user) {
-        // user not found
-        console.log('userStrategy.js :: no user found');
-        return done(null, false, {message: 'Incorrect credentials.'});
-      } else {
-        // found user! Now check their given password against the one stored in the DB
-        // comparePassword() is defined in the schema/model file!
-        user.comparePassword(password, (err, isMatch) => {
-          if(err) {
-            throw err;
-          }
+    passReqToCallback: true,
+    usernameField: 'username'
+    }, function(req, username, password, done) {
+	    pool.connect(function (err, client, release) {
+	    	console.log('called local - pg');
 
-          if(isMatch) {
-            // all good, populate user object on the session through serializeUser
-            console.log('userStrategy.js :: all good');
-            return(done(null, user));
-          } else {
-            // no good.
-            console.log('userStrategy.js :: password incorrect');
-            done(null, false, {message: 'Incorrect credentials.'});
-          }
-        });
-      } // end else
-    }); // end findOne
-  } // end callback
+        // assumes the username will be unique, thus returning 1 or 0 results
+        client.query(`SELECT * FROM users WHERE username = $1`, [username],
+          function(err, result) {
+            var user = {};
+
+            console.log('here');
+
+            // Handle Errors
+            if (err) {
+              console.log('connection err ', err);
+              done(null, user);
+            }
+
+            release();
+
+            if(result.rows[0] != undefined) {
+              user = result.rows[0];
+              console.log('User obj', user);
+              // Hash and compare
+              if(encryptLib.comparePassword(password, user.password)) {
+                // all good!
+                console.log('passwords match');
+                done(null, user);
+              } else {
+                console.log('password does not match');
+                done(null, false, {message: 'Incorrect credentials.'});
+              }
+            } else {
+              console.log('no user');
+              done(null, false);
+            }
+
+          });
+	    });
+    }
 ));
 
 module.exports = passport;
+

@@ -1,8 +1,10 @@
 let express = require('express');
 let router = express.Router();
+let pool = require('../modules/pool.js')
 let passport = require('passport');
 let Users = require('../models/user.model');
 let path = require('path');
+var encryptLib = require('../modules/encryption');
 
 // Handles request for HTML file
 router.get('/', (req, res, next) => {
@@ -10,33 +12,35 @@ router.get('/', (req, res, next) => {
   res.sendFile(path.resolve(__dirname, '../public/views/templates/register.html'));
 });
 
+
 // Handles POST request with new user data
-router.post('/', (req, res, next) => {
-  console.log('post /register route');
-  /*
-  username: {type: String, required: true, index: {unique: true}},
-  password: {type: String, required: true},
-  recipes: {type: Array}
-  */
-    let userToSave = {
-      username : req.body.username,
-      password : req.body.password
+router.post('/', function(req, res, next) {
+  
+    var saveUser = {
+      username: req.body.username,
+      password: encryptLib.encryptPassword(req.body.password)
     };
-
-
-    Users.create(userToSave, (err, post) => {
-      console.log('post /register -- User.create');
-         if(err) {
-           console.log('post /register -- User.create -- failure');
-           // next() here would continue on and route to routes/index.js
-           next(err);
-         } else {
-           console.log('post /register -- User.create -- success');
-          // route a new express request for GET '/'
-          res.redirect('/');
-         }
-    });
-});
-
-
-module.exports = router;
+    console.log('new user:', saveUser);
+  
+    pool.connect(function(err, client, done) {
+      if(err) {
+        console.log("Error connecting: ", err);
+        res.sendStatus(500);
+      }else { client.query("INSERT INTO users (username, password) VALUES ($1, $2) RETURNING id",
+        [saveUser.username, saveUser.password],
+          function (err, result) {
+            client.end();
+  
+            if(err) {
+              console.log("Error inserting data: ", err);
+              res.sendStatus(500);
+            } else {
+              res.sendStatus(201);
+            }
+          });
+    }});
+  
+  });
+  
+  
+  module.exports = router;

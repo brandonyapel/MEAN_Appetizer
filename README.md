@@ -35,8 +35,8 @@ See the array in the `market.router.js` file. Items are returned by the `/market
 
 ## Screen Shot
 
-![alt text](imagesForReadme/pic1.jpg)
-![alt text](imagesForReadme/pic2.jpg)
+![Planning Board](imagesForReadMe/pic1.jpg)
+![Feature Tracking](imagesForReadMe/pic2.jpg)
 
 ## Base Functionality
 

@@ -1,0 +1,71 @@
+<div ng-include="'views/partials/nav.html'"></div>
+<div class="container">
+  <div class="content">
+    <table class="table table-hover table-striped">
+      <thead>
+        <tr>
+          <th>Projects</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Project Name</td>
+          <td>
+            <button class="btn btn-info btn-sm">
+              <span class="glyphicon glyphicon-eye-open"></span>
+            </button>
+          </td>
+          <td>
+            <button class="btn btn-info btn-sm">
+              <span class="glyphicon glyphicon-download-alt"></span>
+            </button>
+          </td>
+          <td>
+            <button class="btn btn-info btn-sm">
+              <span class="glyphicon glyphicon-trash"></span>
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>Project Name</td>
+          <td>
+            <button class="btn btn-info btn-sm">
+              <span class="glyphicon glyphicon-eye-open"></span>
+            </button>
+          </td>
+          <td>
+            <button class="btn btn-info btn-sm">
+              <span class="glyphicon glyphicon-download-alt"></span>
+            </button>
+          </td>
+          <td>
+            <button class="btn btn-info btn-sm">
+              <span class="glyphicon glyphicon-trash"></span>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button>Create New Project</button>
+
+  </div>
+
+  <div>
+    <div class="modal-header">
+      <h1>Create New Project</h1>
+    </div>
+    <div class- "modal-body">
+      <label for="newProjectName">Project Name:</label>
+      <input type="text" name="newProjectName" placeholder="Project Name" ng-model="newProject.name">
+    </div>
+    <div class="modal-footer">
+      <button>cancel</button>
+      <a href="#/myCode"><button>Generate Blank Project</button></a>
+      <button>Advanced Options</button>
+    </div>
+  </div>
+
+</div>

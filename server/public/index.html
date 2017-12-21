@@ -1,42 +1,41 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>The Market Place</title>
-        <script type="text/javascript" src="/vendors/angular.min.js"></script>
-        <script type="text/javascript" src="/vendors/angular-route.min.js"></script>
 
-        <!-- angular material -->
-        <link href="vendors/angular-material/angular-material.css" rel="stylesheet" type="text/css">
-        <script src="vendors/angular-animate/angular-animate.min.js" charset="utf-8"></script>
-        <script src="vendors/angular-aria/angular-aria.min.js" charset="utf-8"></script>
-        <script src="vendors/angular-messages/angular-messages.min.js" charset="utf-8"></script>
-        <script src="vendors/angular-material/angular-material.min.js" charset="utf-8"></script>
-        
-        <!-- client -->
-        <script type="text/javascript" src="/scripts/client.es6"></script>
+<head>
+    <title>The Market Place</title>
+    <script type="text/javascript" src="/vendors/angular.min.js"></script>
+    <script type="text/javascript" src="/vendors/angular-route.min.js"></script>
 
-        <!-- controllers -->
-        <script type="text/javascript" src="/scripts/controllers/login.controller.es6"></script>
-        <script type="text/javascript" src="/scripts/controllers/leaderboard.controller.es6"></script>
-        <script type="text/javascript" src="/scripts/controllers/nav.controller.es6"></script>
-        <script type="text/javascript" src="/scripts/controllers/market.controller.es6"></script>
+    <!-- bootstrap -->
+    <link href="vendors/bootstrap/css/bootstrap.css" rel="stylesheet" >
+    <link href="vendors/bootstrap/fonts">
 
-        <!-- services -->
-        <script type="text/javascript" src="/scripts/services/user.service.es6"></script>
-        <script type="text/javascript" src="/scripts/services/market.service.js"></script>
-        <script type="text/javascript" src="/scripts/services/leaderboard.service.js"></script>
+    <!-- css -->
+    <link href="views/style.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-        <!-- css -->
-        <link href="views/style.css" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-        rel="stylesheet">
+    <!-- client -->
+    <script type="text/javascript" src="/scripts/client.js"></script>
 
-    </head>
+    <!-- controllers -->
+    <script type="text/javascript" src="/scripts/controllers/login.controller.js"></script>
+    <script type="text/javascript" src="/scripts/controllers/nav.controller.js"></script>
+    <script type="text/javascript" src="/scripts/controllers/myHome.controller.js"></script>
+    <script type="text/javascript" src="/scripts/controllers/myProjects.controller.js"></script>
+    <script type="text/javascript" src="/scripts/controllers/myCode.controller.js"></script>
+    <!-- services -->
+    <script type="text/javascript" src="/scripts/services/user.service.js"></script>
 
-    <body ng-app="myApp">
-      <header ng-include="'/views/partials/header.html'"></header>
 
-      <main ng-view></main>
 
-    </body>
+
+</head>
+
+<body ng-app="myApp">
+    <header ng-include="'/views/partials/header.html'"></header>
+
+    <main ng-view></main>
+
+</body>
+
 </html>

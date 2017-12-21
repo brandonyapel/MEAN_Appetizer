@@ -162,3 +162,7 @@ img {
 .md-button:hover {
     background-color: rgb(196, 218, 132);
 }
+
+textarea{
+    font-family: Courier New, Courier, monospace;
+}

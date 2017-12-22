@@ -18,5 +18,11 @@ myApp.service('CodeService', ['$http', function ($http) {
     }
     self.getCode();
 
+    self.copyCode = function (codeID) {
+        var copyText = document.getElementById(codeID);
+        copyText.select();
+        document.execCommand('Copy');
+        alert("Copied")
+    }
 
 }]);

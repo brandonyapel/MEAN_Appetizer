@@ -1,4 +1,4 @@
-myApp.controller('myCodeController', ['UserService','CodeService', function (UserService,CodeService) {
+myApp.controller('myCodeController', ['UserService', 'CodeService', function (UserService, CodeService) {
   console.log('myCodeController created');
   self = this;
   self.userObject = UserService.userObject;
@@ -6,6 +6,11 @@ myApp.controller('myCodeController', ['UserService','CodeService', function (Use
 
   self.newCode = '<h1>Dog<h1>';
   self.code = CodeService.code
+
+  //function to copy codestring in code block
+  self.copyCode = CodeService.copyCode
+
+  
   // self.value('ui.config',
   //   {
   //     codemirror:

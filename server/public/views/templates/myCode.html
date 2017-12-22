@@ -3,6 +3,7 @@
     <div class="content">
 
         <section ng-repeat="code in mc.code.list">
+            <input type="text" class="form-group" placeholder="Project Name" ng-model="projectName">
             <h2>{{code.filename+code.filetype}}</h2>
             <button type="button" class="btn btn-default btn-sm" ng-click="mc.copyCode(code.id)">
                 <span class="glyphicon glyphicon-copy" ></span> Copy

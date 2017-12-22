@@ -3,6 +3,8 @@ myApp.service('CodeService', ['$http', function ($http) {
 
     var self = this;
 
+    self.projectName
+
     self.code = { list: '' };
 
 
@@ -15,7 +17,8 @@ myApp.service('CodeService', ['$http', function ($http) {
             console.log('response', response);
             self.code.list = response.data;
         });
-    }
+    };
+
     self.getCode();
 
     self.copyCode = function (codeID) {
@@ -23,7 +26,7 @@ myApp.service('CodeService', ['$http', function ($http) {
         copyText.select();
         document.execCommand('Copy');
         alert("Copied")
-    }
+    };
 
     self.downloadCodeBlock = function (code) {
         console.log('downloadCodeBlock()')
@@ -35,7 +38,7 @@ myApp.service('CodeService', ['$http', function ($http) {
                 // see FileSaver.js
                 saveAs(content, filename + '.zip');
             });
-    }
+    };
 
     self.downloadProject = function (/* self.code.list */codeList) {
         console.log('downloadCodeProject()')
@@ -134,9 +137,24 @@ myApp.service('CodeService', ['$http', function ($http) {
                 // see FileSaver.js
                 saveAs(content, "public.zip");
             });
+    };
 
+    self.saveNewProject = function (projectName,user_id,/* self.code.list */codeList){
+        //post new project using user_id and projectName to Projects
 
+        //get project and assign to self.projectName
+
+        //loop post all files in self.code.list add the project_id from get project request
+
+        //get all files for Current Project using Join request of Files and Projects Table 
+
+        //Assign values of files get request too self.code.list
 
     };
 
 }]);
+
+postNewProjectFunction (user_id,projectName) {
+    
+
+};

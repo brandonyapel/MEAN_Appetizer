@@ -4,8 +4,10 @@ myApp.controller('myCodeController', ['UserService', 'CodeService', function (Us
   self.userObject = UserService.userObject;
   console.log('myCodeController is Logging', self.userObject);
 
-  self.newCode = '<h1>Dog<h1>';
   self.code = CodeService.code;
+
+  //projectName Input
+  self.projectName = CodeService.projectName;
 
   //function to copy codestring in code block
   self.copyCode = CodeService.copyCode;

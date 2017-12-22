@@ -25,4 +25,16 @@ myApp.service('CodeService', ['$http', function ($http) {
         alert("Copied")
     }
 
+    self.downloadCodeBlock = function (code) {
+        console.log('downloadCodeBlock()')
+        var zip = new JSZip();
+        var filename = code.filename+code.filetype
+        zip.file(filename, 'codestring');
+        zip.generateAsync({ type: "blob" })
+            .then(function (content) {
+                // see FileSaver.js
+                saveAs(content, filename+'.zip');
+            });
+    }
+
 }]);

@@ -5,12 +5,14 @@ myApp.controller('myCodeController', ['UserService', 'CodeService', function (Us
   console.log('myCodeController is Logging', self.userObject);
 
   self.newCode = '<h1>Dog<h1>';
-  self.code = CodeService.code
+  self.code = CodeService.code;
 
   //function to copy codestring in code block
-  self.copyCode = CodeService.copyCode
+  self.copyCode = CodeService.copyCode;
 
-  
+  //function to download code in codeblock on button click
+  self.downloadCodeBlock = CodeService.downloadCodeBlock;
+
   // self.value('ui.config',
   //   {
   //     codemirror:

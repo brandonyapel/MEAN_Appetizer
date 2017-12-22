@@ -11,6 +11,7 @@ let port = process.env.PORT || 5000;
 let indexRouter = require('./routes/index.router');
 let userRouter = require('./routes/user.router');
 let registerRouter = require('./routes/register.router');
+let codeRouter = require('./routes/code.router')
 
 
 // Body parser middleware
@@ -30,6 +31,8 @@ app.use(passport.session());
 // Routes
 app.use('/register', registerRouter);
 app.use('/user', userRouter);
+
+app.use('/code', codeRouter)
 
 // Catch all bucket, must be last!
 app.use('/', indexRouter);

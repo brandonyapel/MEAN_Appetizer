@@ -2,8 +2,8 @@
 <div class="container">
     <div class="content">
 
-        <section id="text-demo">
-            <h2>file.filetype</h2>
+        <section ng-repeat="code in mc.code.list">
+            <h2>{{code.filename+code.filetype}}</h2>
             <button type="button" class="btn btn-default btn-sm">
                 <span class="glyphicon glyphicon-copy"></span> Copy
             </button>
@@ -11,9 +11,13 @@
                 <span class="glyphicon glyphicon-download-alt"></span> Download
             </button>
 
-            <textarea class="form-control" rows="10" placeholder="code">{{mc.newCode}}</textarea>
+            <textarea class="form-control" rows="10" placeholder="empty code file" ng-model="code.codestring"></textarea>
         </section>
 
+        <button>exit</button>
+        <button>save</button>
+        <button>download</button>
+        
 
     </div>
 </div>

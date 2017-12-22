@@ -1,10 +1,11 @@
-myApp.controller('myCodeController', ['UserService', function (UserService) {
+myApp.controller('myCodeController', ['UserService','CodeService', function (UserService,CodeService) {
   console.log('myCodeController created');
   self = this;
   self.userObject = UserService.userObject;
   console.log('myCodeController is Logging', self.userObject);
 
   self.newCode = '<h1>Dog<h1>';
+  self.code = CodeService.code
   // self.value('ui.config',
   //   {
   //     codemirror:

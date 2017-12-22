@@ -13,6 +13,9 @@ myApp.controller('myCodeController', ['UserService', 'CodeService', function (Us
   //function to download code in codeblock on button click
   self.downloadCodeBlock = CodeService.downloadCodeBlock;
 
+  //function to download code project on button click
+  self.downloadProject = CodeService.downloadProject
+
   // self.value('ui.config',
   //   {
   //     codemirror:

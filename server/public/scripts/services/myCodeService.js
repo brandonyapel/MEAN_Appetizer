@@ -28,13 +28,115 @@ myApp.service('CodeService', ['$http', function ($http) {
     self.downloadCodeBlock = function (code) {
         console.log('downloadCodeBlock()')
         var zip = new JSZip();
-        var filename = code.filename+code.filetype
+        var filename = code.filename + code.filetype
         zip.file(filename, 'codestring');
         zip.generateAsync({ type: "blob" })
             .then(function (content) {
                 // see FileSaver.js
-                saveAs(content, filename+'.zip');
+                saveAs(content, filename + '.zip');
             });
     }
+
+    self.downloadProject = function (/* self.code.list */codeList) {
+        console.log('downloadCodeProject()')
+        //create new zip
+        var zip = new JSZip();
+        //directories in master directory
+        var server = zip.folder('server');
+
+        //directories in the server folder
+        var models = server.folder('models');
+        var modules = server.folder('modules');
+        var public = server.folder('public');
+        var routes = server.folder('routes');
+
+        //directories in the public folder
+        var scripts = public.folder('scripts');
+        var styles = public.folder('styles');
+        var vendors = public.folder('vendors');
+        var views = public.folder('views');
+
+        //directories in the scripts folder
+        var controllers = scripts.folder('controllers');
+        var services = scripts.folder('services');
+
+        //directories in the views folder
+        var partials = views.folder('partials');
+        var templates = views.folder('templates');
+
+        for (let saveFileIndex = 0; saveFileIndex < codeList.length; saveFileIndex++) {
+            currentFile = codeList[saveFileIndex];
+            nameOfFile = currentFile.filename + currentFile.filetype;
+
+            //check to see if file should be put in master directory
+            if (currentFile.directory == 'zip') {
+                zip.file(nameOfFile, currentFile.codestring);
+            }
+            //check to see if file should be put in server directory
+            else if (currentFile.directory == 'server') {
+                server.file(nameOfFile, currentFile.codestring);
+            }
+            //check to see if file should be put in models directory
+            else if (currentFile.directory == 'models') {
+                models.file(nameOfFile, currentFile.codestring);
+            }
+            //check to see if file should be in modules directory
+            else if (currentFile.directory == 'modules') {
+                modules.file(nameOfFile, currentFile.codestring);
+            }
+            //check to see if file should be in public directory
+            else if (currentFile.directory == 'public') {
+                public.file(nameOfFile, currentFile.codestring);
+            }
+            //check to see if file should be in routes directory
+            else if (currentFile.directory == 'routes') {
+                routes.file(nameOfFile, currentFile.codestring);
+            }
+            //check to see if file should be in scripts directory
+            else if (currentFile.directory == 'scripts') {
+                scripts.file(nameOfFile, currentFile.codestring);
+            }
+            //check to see if file shoud be in styles directory
+            else if (currentFile.directory == 'styles') {
+                styles.file(nameOfFile, currentFile.codestring);
+            }
+            //check to see if file should be in vendors directory
+            else if (currentFile.directory == 'vendors') {
+                vendors.file(nameOfFile, currentFile.codestring);
+            }
+            //check to see if file should be in views directory
+            else if (currentFile.directory == 'views') {
+                views.file(nameOfFile, currentFile.codestring);
+            }
+            //check to see if file should be in controllers directory
+            else if (currentFile.directory == 'controllers') {
+                controllers.file(nameOfFile, currentFile.codestring);
+            }
+            //check to see if file should be in services directory
+            else if (currentFile.directory == 'services') {
+                services.file(nameOfFile, currentFile.codestring);
+            }
+            //check to see if file should be in partials directory
+            else if (currentFile.directory == 'partials') {
+                partials.file(nameOfFile, currentFile.codestring);
+            }
+            //check to see if file should be in templates directory
+            else if (currentFile.directory == 'templates') {
+                templates.file(nameOfFile, currentFile.codestring);
+            }
+            //catch all to put files not matching in master directory
+            else {
+                zip.file(nameOfFile, currentFile.codestring);
+            };
+        };
+        zip.generateAsync({ type: "blob" })
+            .then(function (content) {
+                // see FileSaver.js
+                saveAs(content, "public.zip");
+            });
+
+
+
+    };
 
 }]);

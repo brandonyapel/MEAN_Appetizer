@@ -1,0 +1,168 @@
+/* Current color theme:
+ * https://color.adobe.com/clariandi-color-theme-9819316/
+ */
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  color: #564B3D;
+}
+
+a {
+  color: #FB8E89;
+}
+
+.instructions .container h1 {
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.instructions {
+    background-color: #564B3D;
+    color: #DDDDDD;
+    padding: 15px;
+}
+
+#entryForm {
+    margin-top: 14px;
+}
+
+.content {
+  padding: 15px;
+}
+
+.container {
+    padding: 10px;
+}
+
+.container p {
+    margin-top : 14px;
+}
+
+.message {
+    padding: 10px 0;
+}
+
+.message p {
+    margin-left: 10px;
+}
+
+.message:nth-child(odd) {
+     background-color: #eeeeee;
+}
+
+.message:nth-child(even) {
+    background-color: #f8f8f8;
+}
+
+.btn-danger{
+    margin-left: 10px;
+}
+
+.navbar {
+  background-color: #A4B76E;
+  width: 100%;
+  border-radius: 0px;
+
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: #564B3D;
+    font-size: 1.5em;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    text-decoration: underline;
+    color: #564B3D;
+}
+
+
+.items{
+    margin: 5px;
+    padding:5px;
+    display: inline-block;
+}
+
+.leader{
+    float: none;
+    padding: 12px 45px;
+    border-top: 2px solid #A4B76E;
+    color: #564B3D
+    
+      
+}
+
+img {
+    zoom: 20%;
+    
+}
+.leader:hover { 
+    background-color: #A4B76E;
+}
+
+.inventory {
+    display: inline-block;
+    padding: 20px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #564B3D;
+    background-color: #A4B76E;
+    color: #564B3D;
+    margin: 2px;
+    border-radius: 5px;
+    
+    
+  
+}
+
+.md-button {
+    /* padding: 0 6px 0 6px; */
+    /* margin: 6px 8px 6px 8px; */
+    min-width: 88px;
+    border-radius: 3px;
+    font-size: 14px;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration:none;
+    outline: none;
+    background-color: #A4B76E;
+    border-style: solid;
+    border-width: 1px;
+
+  }
+
+  .items {
+      text-align: center;
+      image-orientation: center;
+  }
+
+  .inventory:hover { 
+    background-color: rgb(196, 218, 132);
+}
+
+.md-button:hover {
+    background-color: rgb(196, 218, 132);
+}
+
+textarea{
+    font-family: Courier New, Courier, monospace;
+}

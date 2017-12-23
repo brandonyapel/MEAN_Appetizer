@@ -12,6 +12,7 @@ let indexRouter = require('./routes/index.router');
 let userRouter = require('./routes/user.router');
 let registerRouter = require('./routes/register.router');
 let codeRouter = require('./routes/code.router')
+let projectRouter = require('./routes/project.router')
 
 
 // Body parser middleware
@@ -32,7 +33,8 @@ app.use(passport.session());
 app.use('/register', registerRouter);
 app.use('/user', userRouter);
 
-app.use('/code', codeRouter)
+app.use('/code', codeRouter);
+app.use('/project', projectRouter);
 
 // Catch all bucket, must be last!
 app.use('/', indexRouter);

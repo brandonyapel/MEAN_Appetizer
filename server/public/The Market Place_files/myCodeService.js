@@ -153,15 +153,14 @@ myApp.service('CodeService', ['$http', function ($http) {
                 self.getProject(projectName)
             })
         };
-
+        
 
         //get project and assign to self.projectName
         self.getProject = function (project) {
             console.log("getProject()");
             $http({
                 method: 'GET',
-                url: '/project',
-                params: { projectname: project }
+                url: '/project/'+project,
             }).then(function (response) {
                 console.log('response', response);
             });

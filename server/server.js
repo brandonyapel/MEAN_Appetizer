@@ -14,10 +14,14 @@ let registerRouter = require('./routes/register.router');
 let codeRouter = require('./routes/code.router')
 let projectRouter = require('./routes/project.router')
 
+//edit express to allow for larger file uploades
+app.use(express.json({limit: '50mb'}));
+app.use(express.urlencoded({limit: '50mb'}));
 
 // Body parser middleware
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({extended: true, limit: '1000mb'}));
+
 
 // Serve back static files
 app.use(express.static('./server/public'));

@@ -4,7 +4,7 @@ var router = express.Router();
 var pool = require('../modules/pool');
 
 router.get('/', function (req, res) {
-    console.log('/code get');
+    console.log('/project get');
     // Attempt to connect to database
     pool.connect(function (errorConnectingToDatabase, client, done) {
         if (errorConnectingToDatabase) {
@@ -59,4 +59,35 @@ router.post('/', function (req, res) {
     });
 });
 
+router.post('/files', function (req, res) {
+    console.log('/project/file post ');
+    var file = req.body.file
+    var currentProject = req.body.currentProject;
+    //Attempt to connect to database
+    pool.connect(function (errorConnectingToDatabase, client, done) {
+        if (errorConnectingToDatabase) {
+            //There was an error connecting to database
+            console.log('Error connecting to database', errorConnectingToDatabase);
+            res.sendStatus(500);
+        } else {
+            //We connected to the database!!!
+            //Now, we're going to GET things from the DB
+            //second param array blocks Bobby Drop Table
+            client.query(`INSERT INTO files(project_id,filename,filetype,codestring,directory)
+            VALUES 	($1, $2, $3, $4, $5);`, [currentProject.id,file.filename,file.filetype,file.codestring,file.directory], function (errorMakingQuery, result) {
+                    done();
+                    if (errorMakingQuery) {
+                        //Query failed. Did you test it in Postico? If so
+                        //Log the error
+                        console.log('Error making query', errorMakingQuery);
+                        res.sendStatus(500);
+                    } else {
+                        res.sendStatus(201);
+                    }
+                });
+        }
+    });
+
+    
+});
 module.exports = router

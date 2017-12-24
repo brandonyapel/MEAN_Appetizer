@@ -1,3 +1,4 @@
+
 myApp.service('CodeService', ['$http', function ($http) {
     console.log('CodeService Loaded');
 
@@ -172,17 +173,32 @@ myApp.service('CodeService', ['$http', function ($http) {
         //loop post all files in self.code.list add the project_id from get project request
         self.postProjectFiles = function (/* self.currentProject */ currentProject,/* self.code.list */ codeList) {
             for (let codeListIndex = 0; codeListIndex < codeList.length; codeListIndex++) {
+
                 $http({
                     method: 'POST',
                     url: '/project/files',
                     data: { currentProject: currentProject, file: codeList[codeListIndex] },
                 }).then(function (response) {
                     console.log('response:', response);
-                    
                 })
             }
+            self.getProjectFiles(self.currentProject);
 
         };
+
+        //get all files for Current Project using Join request of Files and Projects Table 
+        self.getProjectFiles = function (/* self.currentProject */ currentProject) {
+            console.log("getProjectFiles()");
+            $http({
+                method: 'GET',
+                url: '/project/files',
+                params: { projectID: currentProject.id }
+            }).then(function (response) {
+                console.log('response', response);
+                self.code.list = response.data;
+            });
+        };
+        //Assign values of files get request too self.code.list
 
 
         self.postNewProject(projectName);
@@ -191,8 +207,6 @@ myApp.service('CodeService', ['$http', function ($http) {
 
 
 
-    //get all files for Current Project using Join request of Files and Projects Table 
 
-    //Assign values of files get request too self.code.list
 
 }]);

@@ -31,6 +31,34 @@ router.get('/', function (req, res) {
     });
 });
 
+router.get('/allMyProjects', function (req, res) {
+    console.log('/project get');
+    // Attempt to connect to database
+    pool.connect(function (errorConnectingToDatabase, client, done) {
+        if (errorConnectingToDatabase) {
+            // There was an error connecting to the database
+            console.log('Error connecting to database', errorConnectingToDatabase);
+            res.sendStatus(500);
+        } else {
+            // We connected to the database!!!
+            // Now, we're going to GET things from thd DB
+            client.query('SELECT * FROM projects WHERE user_id=$1;',
+                [req.user.id],
+                function (errorMakingQuery, result) {
+                    done();
+                    if (errorMakingQuery) {
+                        // Query failed. Did you test it in Postico?
+                        // Log the error
+                        console.log('Error making query', errorMakingQuery);
+                        res.sendStatus(500);
+                    } else {
+                        res.send(result.rows);
+                    }
+                });
+        }
+    });
+});
+
 router.get('/files', function (req, res) {
     console.log('/project/files get');
     console.log('req.query =',req.query)

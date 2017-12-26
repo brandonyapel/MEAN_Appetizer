@@ -24,7 +24,7 @@ myApp.config(function($routeProvider, $locationProvider) {
     })
     .when('/myProjects', {
       templateUrl: '/views/templates/myProjects.html',
-      controller: 'myProjectsController as vm',
+      controller: 'myProjectsController as pc',
       resolve: {
         getuser : function(UserService) {
           return UserService.getuser();

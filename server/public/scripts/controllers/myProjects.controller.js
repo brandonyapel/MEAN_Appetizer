@@ -1,8 +1,14 @@
-myApp.controller('myProjectsController',['UserService', function(UserService) {
+myApp.controller('myProjectsController',['UserService','ProjectService', function(UserService, ProjectService) {
   console.log('myProjectsController created');
-  let vm = this;
+  let pc = this;
 
-  // vm.newProject.name
+  //sources in list of all the users projects into controller
+  pc.myProjects = ProjectService.myProjects;
+  
+
+
+
+
 
 
   

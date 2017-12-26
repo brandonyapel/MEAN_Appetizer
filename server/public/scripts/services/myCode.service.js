@@ -189,6 +189,7 @@ myApp.service('CodeService', ['$http', function ($http) {
         //get all files for Current Project using Join request of Files and Projects Table 
         self.getProjectFiles = function (/* self.currentProject */ currentProject) {
             console.log("getProjectFiles()");
+            self.code.list = {};
             $http({
                 method: 'GET',
                 url: '/project/files',
@@ -203,10 +204,5 @@ myApp.service('CodeService', ['$http', function ($http) {
 
         self.postNewProject(projectName);
     };
-
-
-
-
-
 
 }]);

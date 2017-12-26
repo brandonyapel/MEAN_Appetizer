@@ -20,7 +20,7 @@ myApp.service('ProjectService', function($http, $location){
     //view project code on function on click of view button
     
     //download project code on click of download button
-    self.downloadProject = function (project)
+
     //delete project on click of delete button
 
 

@@ -205,4 +205,16 @@ myApp.service('CodeService', ['$http', function ($http) {
         self.postNewProject(projectName);
     };
 
+    self.getProjectFiles = function (/* self.currentProject */ currentProject) {
+        console.log("getProjectFiles()");
+        self.code.list = {};
+        $http({
+            method: 'GET',
+            url: '/project/files',
+            params: { projectID: currentProject.id }
+        }).then(function (response) {
+            console.log('response', response);
+            self.code.list = response.data;
+        });
+    };
 }]);

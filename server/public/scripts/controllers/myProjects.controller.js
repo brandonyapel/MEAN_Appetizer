@@ -21,7 +21,6 @@ myApp.controller('myProjectsController',['UserService','ProjectService','CodeSer
   pc.deleteProject = ProjectService.deleteProject;
 
 
-
   
 
 }]);

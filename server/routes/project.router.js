@@ -61,7 +61,7 @@ router.get('/allMyProjects', function (req, res) {
 
 router.get('/files', function (req, res) {
     console.log('/project/files get');
-    console.log('req.query =',req.query)
+    console.log('req.query =', req.query)
     // Attempt to connect to database
     pool.connect(function (errorConnectingToDatabase, client, done) {
         if (errorConnectingToDatabase) {
@@ -133,7 +133,7 @@ router.post('/files', function (req, res) {
             //Now, we're going to GET things from the DB
             //second param array blocks Bobby Drop Table
             client.query(`INSERT INTO files(project_id,filename,filetype,codestring,directory)
-            VALUES 	($1, $2, $3, $4, $5);`, [currentProject.id,file.filename,file.filetype,file.codestring,file.directory], function (errorMakingQuery, result) {
+            VALUES 	($1, $2, $3, $4, $5);`, [currentProject.id, file.filename, file.filetype, file.codestring, file.directory], function (errorMakingQuery, result) {
                     done();
                     if (errorMakingQuery) {
                         //Query failed. Did you test it in Postico? If so
@@ -148,5 +148,67 @@ router.post('/files', function (req, res) {
     });
 
 
+});
+
+router.delete('/files', function (req, res) {
+    console.log('/project delete');
+    if (req.isAuthenticated) {
+        // Attempt to connect to database
+        pool.connect(function (errorConnectingToDatabase, client, done) {
+            if (errorConnectingToDatabase) {
+                // There was an error connecting to the database
+                console.log('Error connecting to database', errorConnectingToDatabase);
+                res.sendStatus(500);
+            } else {
+                // We connected to the database!!!
+                // Now, we're going to GET things from thd DB
+                client.query(`DELETE FROM files
+            WHERE project_id = $1;`,
+                    [req.query.project_id],
+                    function (errorMakingQuery, result) {
+                        done();
+                        if (errorMakingQuery) {
+                            // Query failed. Did you test it in Postico?
+                            // Log the error
+                            console.log('Error making query', errorMakingQuery);
+                            res.sendStatus(500);
+                        } else {
+                            res.send(result.rows);
+                        }
+                    });
+            }
+        });
+    }
+});
+
+router.delete('/', function (req, res) {
+    console.log('/project delete');
+    if (req.isAuthenticated) {
+        // Attempt to connect to database
+        pool.connect(function (errorConnectingToDatabase, client, done) {
+            if (errorConnectingToDatabase) {
+                // There was an error connecting to the database
+                console.log('Error connecting to database', errorConnectingToDatabase);
+                res.sendStatus(500);
+            } else {
+                // We connected to the database!!!
+                // Now, we're going to GET things from thd DB
+                client.query(`DELETE FROM projects
+            WHERE id = $1;`,
+                    [req.query.id],
+                    function (errorMakingQuery, result) {
+                        done();
+                        if (errorMakingQuery) {
+                            // Query failed. Did you test it in Postico?
+                            // Log the error
+                            console.log('Error making query', errorMakingQuery);
+                            res.sendStatus(500);
+                        } else {
+                            res.send(result.rows);
+                        }
+                    });
+            }
+        });
+    }
 });
 module.exports = router

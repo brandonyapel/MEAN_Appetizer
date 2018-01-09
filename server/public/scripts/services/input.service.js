@@ -1,11 +1,11 @@
-myApp.service('inputService', function ($http, $location) {
-    console.log('inputService Loaded');
+myApp.service('InputService', function ($http, $location) {
+    console.log('InputService Loaded');
     let self = this;
 
     self.formInputs = {
         projectName: '',
         tableName: '',
-        tableProperties: [{tableHeaders: '', propertyType: ''}],
+        tableProperties: [],
         tableSchema () {
             let schema = '';
             for (let tablePropertyIndex = 0; tablePropertyIndex < this.tableProperties.length; tablePropertyIndex++) {
@@ -29,6 +29,10 @@ myApp.service('inputService', function ($http, $location) {
         }
     };
 
+    self.addProperty = function () {
+        self.formInputs.tableProperties.push({tableHeader: '', schemaProperty: '', propertyType: ''});
+        console.log('addProperty()')
+    };
     
 
 

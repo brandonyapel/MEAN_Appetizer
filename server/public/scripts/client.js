@@ -42,7 +42,7 @@ myApp.config(function($routeProvider, $locationProvider) {
     })
     .when('/input', {
       templateUrl: '/views/templates/input.html',
-      controller: 'inputController as ic',
+      controller: 'InputController as ic',
       resolve: {
         getuser : function(UserService) {
           return UserService.getuser();

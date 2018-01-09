@@ -22,7 +22,18 @@ myApp.service('CodeService', ['$http', function ($http) {
         });
     };
 
-    self.getCode();
+    self.getBaseCode = function () {
+        console.log("getBaseCode");
+        $http({
+            method: 'GET',
+            url: '/code/base'
+        }).then(function (response) {
+            console.log('response', response);
+            self.code.list = response.data;
+        });
+    }
+
+    
 
     self.copyCode = function (codeID) {
         var copyText = document.getElementById(codeID);
@@ -217,4 +228,7 @@ myApp.service('CodeService', ['$http', function ($http) {
             self.code.list = response.data;
         });
     };
+
+    //functions to run on first navigation
+    self.getBaseCode();
 }]);

@@ -40,6 +40,15 @@ myApp.config(function($routeProvider, $locationProvider) {
         }
       }
     })
+    .when('/input', {
+      templateUrl: '/views/templates/input.html',
+      controller: 'inputController as ic',
+      resolve: {
+        getuser : function(UserService) {
+          return UserService.getuser();
+        }
+      }
+    })
     .otherwise({
       redirectTo: 'home'
     });

@@ -1,0 +1,68 @@
+<div class="container">
+    <div class="col-lg-6">
+        
+        <label for="ProjectName">Project Name:</label>
+        <input type="text" placeholder="Project Name" name="ProjectName">
+        
+        <label for="TableName">Table Name:</label>
+        <input type="text" placeholder="Table Name" name="TableName">
+        <br>
+        <br>
+
+        <label for="dbTable">Database and DOM Columns</label>
+        <div name="dbTable">
+            <button><span class="glyphicon glyphicon-minus"></span></button>
+            <button><span class="glyphicon glyphicon-plus"></span></button>
+        </div>
+
+        <!-- <label for="domTable">DOM Columns</label>
+        <div name="domTable">
+            <button>-</button>
+            <button>+</button>
+        </div> -->
+
+        <br>
+
+        <br>
+        <input class="form-check-input" type="checkbox" value="" name="deleteRowButton">
+        <label for="deleteRowButton">Delete Row Button</label>
+        <br>
+        <input class="form-check-input" type="checkbox" value="" name="editRowButton">
+        <label for="editRowButton">Edit Row Button</label>
+        <br>
+        <input class="form-check-input" type="checkbox" value="" name="inputForm">
+        <label for="inputForm">Input Row Form</label>
+        <br>
+        <button>Generate Code</button>
+    </div>
+
+    <div class="col-lg-6">
+        <h2>Database Object:</h2>
+        <div>
+
+        </div>
+        <div>
+            <h2>DOM Table:</h2>
+            <table class="table">
+                <tbody>
+                    <tr ng-repeat="">
+                        <th>{{dom.columnHeader}}</th>
+                    </tr>
+                    <tr>
+                        <td>Example</td>
+                    </tr>
+                    <tr>
+                        <td>Example</td>
+                    </tr>
+                    <tr>
+                        <td>Example</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+
+    </div>
+
+</div>

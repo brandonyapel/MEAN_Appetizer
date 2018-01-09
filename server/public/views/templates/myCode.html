@@ -1,19 +1,23 @@
 <div ng-include="'views/partials/nav.html'"></div>
 <div class="container">
     <div class="content">
-
+        <label for="projectName">Project Name:</label>
+        <input name="projectName" type="text" class="form-group" placeholder="Project Name" ng-model="mc.projectName">
+        <hr>
         <section ng-repeat="code in mc.code.list">
-            <input type="text" class="form-group" placeholder="Project Name" ng-model="mc.projectName">
+
             <h2>{{code.filename+code.filetype}}</h2>
             <button type="button" class="btn btn-default btn-sm" ng-click="mc.copyCode(code.id)">
-                <span class="glyphicon glyphicon-copy" ></span> Copy
+                <span class="glyphicon glyphicon-copy"></span> Copy
             </button>
             <button type="button" class="btn btn-default btn-sm" ng-click="mc.downloadCodeBlock(code)">
                 <span class="glyphicon glyphicon-download-alt"></span> Download
             </button>
 
             <textarea id="{{code.id}}" class="form-control" rows="10" placeholder="empty code file" ng-model="code.codestring"></textarea>
+            <hr>
         </section>
+        
         <br>
 
         <table class="table container">

@@ -2,10 +2,10 @@
     <div class="col-lg-6">
 
         <label for="ProjectName">Project Name:</label>
-        <input type="text" ng-model="ic.forminputs.projectName" placeholder="Project Name" name="ProjectName">
+        <input type="text" ng-model="ic.formInputs.projectName" placeholder="Project Name" name="ProjectName">
 
         <label for="TableName">Table Name:</label>
-        <input type="text" ng-model="ic.forminputs.tableName" placeholder="Table Name" name="TableName">
+        <input type="text" ng-model="ic.formInputs.tableName" placeholder="Table Name" name="TableName">
         <br>
         <br>
 
@@ -33,7 +33,7 @@
                 </tr>
                 <tr ng-repeat="property in ic.formInputs.tableProperties track by $index">
                     <td>
-                        <input type="text" ng-model="property.tableHeader" placeholder="Column Header">
+                        <input type="text" ng-model ="property.tableHeader" placeholder="Column Header">
                     </td>
                     <td>
                         <input type="text" ng-model = "property.schemaProperty" placeholder="Schema Property">
@@ -72,10 +72,11 @@
         <label for="inputForm">Input Row Form</label>
         <br>
         <a href="#/myCode"><button>Generate Project</button></a>
+        <button ng-click="ic.consoleLog()">Console.log(ic.formInputs)</button>
     </div>
 
     <div class="col-lg-6">
-        <h2>Database Schema:</h2>
+        <h2>Preview Database Schema:</h2>
         <pre>
                 let {{ic.forminputs.tableName}}Schema = new Schema({
                     <code ng-repeat="property in ic.formInputs.tableProperties">
@@ -84,7 +85,7 @@
                 });
             </pre>
         <div>
-            <h2>DOM Table:</h2>
+            <h2>Preview DOM Table:</h2>
             <table class="table">
                 <tbody>
                     <tr>

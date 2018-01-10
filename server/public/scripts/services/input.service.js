@@ -3,8 +3,8 @@ myApp.service('InputService', function ($http, $location) {
     let self = this;
 
     self.formInputs = {
-        projectName: '',
-        tableName: '',
+        projectName: 'dinosaur',
+        tableName: 'dinosaur',
         tableProperties: [],
         tableSchema () {
             let schema = '';
@@ -16,16 +16,16 @@ myApp.service('InputService', function ($http, $location) {
                 ';
                 schema += schemaString;
             }
-            return schema
+            return 'dinosaur'
         },
         tableFormInputsHTML () {
-
+            return 'dinosaur'
         },
         tableDOMHeaderHTML () {
-
+            return 'dinosaur'
         },
         tableDataHTML () {
-
+            return 'dinosaur'
         }
     };
 

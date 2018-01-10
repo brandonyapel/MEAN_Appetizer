@@ -1,4 +1,4 @@
-myApp.controller('myCodeController', ['UserService', 'CodeService', function (UserService, CodeService) {
+myApp.controller('myCodeController', ['UserService', 'CodeService', 'InputService', function (UserService, CodeService, InputService) {
   console.log('myCodeController created');
   self = this;
   self.userObject = UserService.userObject;
@@ -20,23 +20,13 @@ myApp.controller('myCodeController', ['UserService', 'CodeService', function (Us
 
   self.saveNewProject = CodeService.saveNewProject;
 
-  // self.value('ui.config',
-  //   {
-  //     codemirror:
-  //       {
-  //         mode: 'javascript',
-  //         lineNumbers: true,
-  //         matchBrackets: true,
-  //         theme: 'rubyblue'
-  //       }
-  //   });
+  //object containing form inputs to generate Base Code
+  self.formInputs = InputService.formInputs
+  console.log('formInputs',self.formInputs);
 
+  //function to get and then generate code based on form inputs
+  self.getBaseCode = CodeService.getBaseCode;
 
-  // self.codeCtrl = function () {
-  //   self.docLocation = document.location.href;
-  //   $http.get(self.docLocation)
-  //     .success(function (data) {
-  //       self.code = data;
-  //     });
-  // }
+  //calls getBaseCode function too generate code based on form inputs
+  self.getBaseCode(self.formInputs);
 }]);

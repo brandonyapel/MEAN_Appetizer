@@ -22,14 +22,40 @@ myApp.service('CodeService', ['$http', function ($http) {
         });
     };
 
-    self.getBaseCode = function () {
+    self.getBaseCode = function (formInputs) {
         console.log("getBaseCode");
+        console.log('formInputs',formInputs);
         $http({
             method: 'GET',
             url: '/code/base'
         }).then(function (response) {
             console.log('response', response);
             self.code.list = response.data;
+            var tableSchema = formInputs.tableSchema();
+            var tableFormInputsHTML = formInputs.tableFormInputsHTML();
+            var tableDOMHeaderHTML = formInputs.tableDOMHeaderHTML();
+            var tableDataHTML = formInputs.tableDataHTML();
+            for (let codeListIndex = 0; codeListIndex < self.code.list.length; codeListIndex++) {
+                console.log(codeListIndex)
+                console.log(self.code.list[codeListIndex].fileName)
+                console.log(formInputs.tableName)
+                if(self.code.list[codeListIndex].fileName != null){
+                    console.log('in if filename statement')
+                    self.code.list[codeListIndex].fileName = self.code.list[codeListIndex].fileName.replace(/xxtableNamexx/g,formInputs.tableName);
+                    self.code.list[codeListIndex].fileName = self.code.list[codeListIndex].fileName.replace(/xxprojectNamexx/g,formInputs.projectName);
+                };
+                if(self.code.list[codeListIndex].codestring != null){
+                    console.log('in if codestring statement')
+                    self.code.list[codeListIndex].codestring = self.code.list[codeListIndex].codestring.replace(/xxtableNamexx/g,formInputs.tableName);
+                    self.code.list[codeListIndex].codestring = self.code.list[codeListIndex].codestring.replace(/xxprojectNamexx/g,formInputs.projectName);
+                    self.code.list[codeListIndex].codestring = self.code.list[codeListIndex].codestring.replace(/xxtableSchemaxx/g,tableSchema);
+                    self.code.list[codeListIndex].codestring = self.code.list[codeListIndex].codestring.replace(/xxtableFormInputsxx/g,tableFormInputsHTML);
+                    self.code.list[codeListIndex].codestring = self.code.list[codeListIndex].codestring.replace(/xxtableDOMHeaderHTMLxx/g,tableDOMHeaderHTML);
+                    self.code.list[codeListIndex].codestring = self.code.list[codeListIndex].codestring.replace(/xxtableDataHTMLxx/g,tableDataHTML);
+                }
+
+
+            }
         });
     }
 
@@ -45,7 +71,7 @@ myApp.service('CodeService', ['$http', function ($http) {
     self.downloadCodeBlock = function (code) {
         console.log('downloadCodeBlock()')
         var zip = new JSZip();
-        var filename = code.filename + code.filetype
+        var filename = code.fileName + code.filetype
         zip.file(filename, 'codestring');
         zip.generateAsync({ type: "blob" })
             .then(function (content) {
@@ -83,7 +109,7 @@ myApp.service('CodeService', ['$http', function ($http) {
 
         for (let saveFileIndex = 0; saveFileIndex < codeList.length; saveFileIndex++) {
             currentFile = codeList[saveFileIndex];
-            nameOfFile = currentFile.filename + currentFile.filetype;
+            nameOfFile = currentFile.fileName + currentFile.filetype;
 
             //check to see if file should be put in master directory
             if (currentFile.directory == 'zip') {
@@ -229,6 +255,5 @@ myApp.service('CodeService', ['$http', function ($http) {
         });
     };
 
-    //functions to run on first navigation
-    self.getBaseCode();
+
 }]);

@@ -10,7 +10,7 @@ myApp.service('CodeService', ['$http', function ($http) {
 
     self.code = { list: '' };
 
-
+    //function to get blank MVP project code
     self.getCode = function () {
         console.log("getCode()");
         $http({
@@ -22,6 +22,7 @@ myApp.service('CodeService', ['$http', function ($http) {
         });
     };
 
+    //function to get Base project Template from db and to replace placeholders with forminputs
     self.getBaseCode = function (formInputs) {
         console.log("getBaseCode");
         console.log('formInputs',formInputs);
@@ -31,19 +32,26 @@ myApp.service('CodeService', ['$http', function ($http) {
         }).then(function (response) {
             console.log('response', response);
             self.code.list = response.data;
+            //sets projectName for zip file
+            self.projectName = formInputs.projectName;
+            //asides method returns to create codes strings to be placed in base template
             var tableSchema = formInputs.tableSchema();
             var tableFormInputsHTML = formInputs.tableFormInputsHTML();
             var tableDOMHeaderHTML = formInputs.tableDOMHeaderHTML();
             var tableDataHTML = formInputs.tableDataHTML();
+
+            //for loop to replace all the replacement placeholders fileNames and codestrings
             for (let codeListIndex = 0; codeListIndex < self.code.list.length; codeListIndex++) {
                 console.log(codeListIndex)
                 console.log(self.code.list[codeListIndex].fileName)
                 console.log(formInputs.tableName)
+                //cannot replace null to avoid error only replace filenames that are not null
                 if(self.code.list[codeListIndex].fileName != null){
                     console.log('in if filename statement')
                     self.code.list[codeListIndex].fileName = self.code.list[codeListIndex].fileName.replace(/xxtableNamexx/g,formInputs.tableName);
                     self.code.list[codeListIndex].fileName = self.code.list[codeListIndex].fileName.replace(/xxprojectNamexx/g,formInputs.projectName);
                 };
+                //cannot replace null to avoid error only replace codestrings that are not null
                 if(self.code.list[codeListIndex].codestring != null){
                     console.log('in if codestring statement')
                     self.code.list[codeListIndex].codestring = self.code.list[codeListIndex].codestring.replace(/xxtableNamexx/g,formInputs.tableName);
@@ -60,7 +68,7 @@ myApp.service('CodeService', ['$http', function ($http) {
     }
 
     
-
+    //function to copy code string in each code block
     self.copyCode = function (codeID) {
         var copyText = document.getElementById(codeID);
         copyText.select();
@@ -68,6 +76,7 @@ myApp.service('CodeService', ['$http', function ($http) {
         alert("Copied")
     };
 
+    //function to download code block
     self.downloadCodeBlock = function (code) {
         console.log('downloadCodeBlock()')
         var zip = new JSZip();
@@ -80,6 +89,7 @@ myApp.service('CodeService', ['$http', function ($http) {
             });
     };
 
+    //function to download Project using filesaver and jszip
     self.downloadProject = function (/* self.code.list */codeList) {
         console.log('downloadCodeProject()')
         //create new zip
@@ -175,10 +185,11 @@ myApp.service('CodeService', ['$http', function ($http) {
         zip.generateAsync({ type: "blob" })
             .then(function (content) {
                 // see FileSaver.js
-                saveAs(content, "public.zip");
+                saveAs(content, self.projectName+".zip");
             });
     };
 
+    //function to save New Project to database
     self.saveNewProject = function (/* self.projectName */projectName,/* self.code.list */codeList) {
         //post new project using user_id and projectName to Projects
         self.postNewProject = function (projectName) {

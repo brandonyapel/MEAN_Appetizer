@@ -1,7 +1,7 @@
 
 Features
 [X]Feature-Registration using passport
-[ X]Feature-User Home Page with projects
+[X]Feature-User Home Page with projects
 [X]Feature- NewProject Ability to create new project
 [X]Feature-Blank project ability to generate pure baseline project infrastructure
 [X]Feature-Input form for table project
@@ -13,7 +13,7 @@ Features
 [X]Feature-ability to download file for code block
 [X]Feature-abitlity to download entire project into zip file.
 [X]Feature-Preview generate a preview of database and DOM that can be seen by person inputting on form
-[ ]Feature table to DOM
+[X]Feature table to DOM
 [ ]Feature list to DOM
 [ ]Feature custom HTML to DOM
 [ ]Feature-authentication option for generated project

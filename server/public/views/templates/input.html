@@ -29,15 +29,15 @@
                         Type
                     </th>
                     <th>
-                            <span class="glyphicon glyphicon-minus"></span>
+                        <span class="glyphicon glyphicon-minus"></span>
                     </th>
                 </tr>
                 <tr ng-repeat="property in ic.formInputs.tableProperties track by $index">
                     <td>
-                        <input type="text" ng-model ="property.tableHeader" placeholder="Column Header">
+                        <input type="text" ng-model="property.tableHeader" placeholder="Column Header">
                     </td>
                     <td>
-                        <input type="text" ng-model = "property.schemaProperty" placeholder="Schema Property">
+                        <input type="text" ng-model="property.schemaProperty" placeholder="Schema Property">
                     </td>
                     <td>
                         <select ng-model="property.propertyType">
@@ -63,47 +63,93 @@
         <br>
 
         <br>
-        <input class="form-check-input" type="checkbox" value="" name="deleteRowButton">
-        <label for="deleteRowButton">Delete Row Button</label>
+        <input class="form-check-input" type="checkbox" value="" ng-model="ic.formInputs.hasDeleteButtons" name="deleteRowButton">
+        <label for="deleteRowButton">Delete Row Buttons</label>
         <br>
-        <input class="form-check-input" type="checkbox" value="" name="editRowButton">
-        <label for="editRowButton">Edit Row Button</label>
+        <input class="form-check-input" type="checkbox" value="" ng-model="ic.formInputs.hasEditButtons" name="editRowButton">
+        <label for="editRowButton">Edit Row Buttons</label>
         <br>
-        <input class="form-check-input" type="checkbox" value="" name="inputForm">
+        <input class="form-check-input" type="checkbox" value="" ng-model="ic.formInputs.hasInputForm" name="inputForm">
         <label for="inputForm">Input Row Form</label>
         <br>
-        <a href="#/myCode"><button>Generate Project</button></a>
+        <a href="#/myCode">
+            <button>Generate Project</button>
+        </a>
         <button ng-click="ic.consoleLog()">Console.log(ic.formInputs)</button>
     </div>
 
     <div class="col-lg-6">
         <h2>Preview Database Schema:</h2>
         <pre>
-                let {{ic.forminputs.tableName}}Schema = new Schema({
+                let {{ic.formInputs.tableName}}Schema = new Schema({
                     <code ng-repeat="property in ic.formInputs.tableProperties">
-                        {{property.schemaProperty}}: { type: {{property.propertyType}}},
+                        {{property.schemaProperty}}: { type: {{property.propertyType}} },
                     </code>
                 });
             </pre>
         <div>
             <h2>Preview DOM Table:</h2>
+            <p>Edit and/or Delete buttons will not function in preview</p>
             <table class="table">
                 <tbody>
                     <tr>
+                        <th ng-if="ic.formInputs.hasEditButtons"></th>
                         <th ng-repeat="property in ic.formInputs.tableProperties">{{property.tableHeader}}</th>
+                        <th ng-if="ic.formInputs.hasDeleteButtons"></th>
                     </tr>
                     <tr>
+                        <td ng-if="ic.formInputs.hasEditButtons">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </td>
                         <td ng-repeat="property in ic.formInputs.tableProperties">{{property.propertyType}}</td>
+                        <td ng-if="ic.formInputs.hasDeleteButtons">
+                            <span class="glyphicon glyphicon-minus"></span>
+                        </td>
                     </tr>
                     <tr>
+                        <td ng-if="ic.formInputs.hasEditButtons">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </td>
                         <td ng-repeat="property in ic.formInputs.tableProperties">{{property.propertyType}}</td>
+                        <td ng-if="ic.formInputs.hasDeleteButtons">
+                            <span class="glyphicon glyphicon-minus"></span>
+                        </td>
                     </tr>
                     <tr>
+                        <td ng-if="ic.formInputs.hasEditButtons">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </td>
                         <td ng-repeat="property in ic.formInputs.tableProperties">{{property.propertyType}}</td>
+                        <td ng-if="ic.formInputs.hasDeleteButtons">
+                            <span class="glyphicon glyphicon-minus"></span>
+                        </td>
                     </tr>
                 </tbody>
             </table>
-
+            <div ng-if="ic.formInputs.hasInputForm">
+                    <h2>Preview Input Form:</h2>
+                    <p>Input form fields and buttons will not function in preview</p>
+                    <label for=""></label>
+                    <table name="inputFormPreview">
+                        <tr ng-repeat="property in ic.formInputs.tableProperties">
+                            <td><label for="">{{property.tableHeader}}</label></td>
+                            <td> 
+                                <input type="text" ng-if="property.propertyType=='String'">
+                                <input type="number" ng-if="property.propertyType=='Number'">
+                                <input type="checkbox" ng-if="property.propertyType=='Boolean'"> 
+                                <input type="date" ng-if="property.propertyType=='Date'">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <button>Submit</button>
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    
+            </div>
         </div>
 
 

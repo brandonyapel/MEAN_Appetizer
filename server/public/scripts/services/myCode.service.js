@@ -39,7 +39,9 @@ myApp.service('CodeService', ['$http', function ($http) {
             var tableFormInputsHTML = formInputs.tableFormInputsHTML();
             var tableDOMHeaderHTML = formInputs.tableDOMHeaderHTML();
             var tableDataHTML = formInputs.tableDataHTML();
-
+            var deleteRowControllerJS = formInputs.deleteRowControllerJS();
+            var deleteRowServiceJS = formInputs.deleteRowServiceJS();
+            var deleteRowRouteJS = formInputs.deleteRowRouteJS();
             //for loop to replace all the replacement placeholders fileNames and codestrings
             for (let codeListIndex = 0; codeListIndex < self.code.list.length; codeListIndex++) {
                 console.log(codeListIndex)
@@ -60,6 +62,9 @@ myApp.service('CodeService', ['$http', function ($http) {
                     self.code.list[codeListIndex].codestring = self.code.list[codeListIndex].codestring.replace(/xxtableFormInputsxx/g,tableFormInputsHTML);
                     self.code.list[codeListIndex].codestring = self.code.list[codeListIndex].codestring.replace(/xxtableDOMHeaderHTMLxx/g,tableDOMHeaderHTML);
                     self.code.list[codeListIndex].codestring = self.code.list[codeListIndex].codestring.replace(/xxtableDataHTMLxx/g,tableDataHTML);
+                    self.code.list[codeListIndex].codestring = self.code.list[codeListIndex].codestring.replace(/xxdeleteRowControllerxx/g,deleteRowControllerJS);
+                    self.code.list[codeListIndex].codestring = self.code.list[codeListIndex].codestring.replace(/xxdeleteRowServicexx/g,deleteRowServiceJS);
+                    self.code.list[codeListIndex].codestring = self.code.list[codeListIndex].codestring.replace(/xxdeleteRowRoutexx/g,deleteRowRouteJS);
                 }
 
 

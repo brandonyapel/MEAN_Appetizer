@@ -35,13 +35,16 @@ myApp.service('CodeService', ['$http', function ($http) {
             //sets projectName for zip file
             self.projectName = formInputs.projectName;
             //asides method returns to create codes strings to be placed in base template
-            var tableSchema = formInputs.tableSchema();
-            var tableFormInputsHTML = formInputs.tableFormInputsHTML();
-            var tableDOMHeaderHTML = formInputs.tableDOMHeaderHTML();
-            var tableDataHTML = formInputs.tableDataHTML();
-            var deleteRowControllerJS = formInputs.deleteRowControllerJS();
-            var deleteRowServiceJS = formInputs.deleteRowServiceJS();
-            var deleteRowRouteJS = formInputs.deleteRowRouteJS();
+            let tableSchema = formInputs.tableSchema();
+            let tableFormInputsHTML = formInputs.tableFormInputsHTML();
+            let tableDOMHeaderHTML = formInputs.tableDOMHeaderHTML();
+            let tableDataHTML = formInputs.tableDataHTML();
+            let deleteRowControllerJS = formInputs.deleteRowControllerJS();
+            let deleteRowServiceJS = formInputs.deleteRowServiceJS();
+            let deleteRowRouteJS = formInputs.deleteRowRouteJS();
+            let editRowControllerJS = formInputs.editRowControllerJS()
+            let editRowServiceJS = formInputs.editRowServiceJS()
+            let editRowRouteJS = formInputs.editRowRouteJS()
             //for loop to replace all the replacement placeholders fileNames and codestrings
             for (let codeListIndex = 0; codeListIndex < self.code.list.length; codeListIndex++) {
                 console.log(codeListIndex)
@@ -65,6 +68,9 @@ myApp.service('CodeService', ['$http', function ($http) {
                     self.code.list[codeListIndex].codestring = self.code.list[codeListIndex].codestring.replace(/xxdeleteRowControllerxx/g,deleteRowControllerJS);
                     self.code.list[codeListIndex].codestring = self.code.list[codeListIndex].codestring.replace(/xxdeleteRowServicexx/g,deleteRowServiceJS);
                     self.code.list[codeListIndex].codestring = self.code.list[codeListIndex].codestring.replace(/xxdeleteRowRoutexx/g,deleteRowRouteJS);
+                    self.code.list[codeListIndex].codestring = self.code.list[codeListIndex].codestring.replace(/xxeditRowControllerxx/g,editRowControllerJS);
+                    self.code.list[codeListIndex].codestring = self.code.list[codeListIndex].codestring.replace(/xxeditRowServicexx/g,editRowServiceJS);
+                    self.code.list[codeListIndex].codestring = self.code.list[codeListIndex].codestring.replace(/xxeditRowRoutexx/g,editRowRouteJS);
                 }
 
 

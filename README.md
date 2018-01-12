@@ -17,7 +17,7 @@ Features
 [ ]Feature list to DOM
 [ ]Feature custom HTML to DOM
 [ ]Feature-authentication option for generated project
-[ ]Feature-edit button for row input option
+[X]Feature-edit button for row input option
 [X]Feature-delete button
 [ ]Feature-toggle button
 [ ]Feature-unit tests

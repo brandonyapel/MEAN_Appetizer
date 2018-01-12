@@ -3,10 +3,13 @@
     <div class="col-lg-6">
 
         <label for="ProjectName">Project Name:</label>
-        <input type="text" ng-model="ic.formInputs.projectName" placeholder="Project Name" name="ProjectName">
-
-        <label for="TableName">Table Name:</label>
-        <input type="text" ng-model="ic.formInputs.tableName" placeholder="Table Name" name="TableName">
+        <input class="form-control" type="text" ng-model="ic.formInputs.projectName" placeholder="Project Name" name="ProjectName">
+        <p>Project Name will be the name of your file folder.</p>
+        <br>
+        <label for="TableName">tableName:</label>
+        <img id="camelCase" data-toggle="tool" src="../images/camelCase.png" alt="">
+        <input class="form-control" type="text" ng-model="ic.formInputs.tableName" placeholder="Table Name" name="TableName">
+        <p>tableName is used in your code to construct variables and file names.  Recommended to be written in camelCase</p>
         <br>
         <br>
 
@@ -22,7 +25,7 @@
                         Column Header
                     </th>
                     <th>
-                        Schema Property
+                        schemaProperty
                         <img id="camelCase" data-toggle="tool" src="../images/camelCase.png" alt="">
                     </th>
                     <th>
@@ -85,8 +88,19 @@
                     <code ng-repeat="property in ic.formInputs.tableProperties">
                         {{property.schemaProperty}}: { type: {{property.propertyType}} },
                     </code>
+                    <code ng-if="ic.formInputs.hasEditButtons">
+                        //currentlyeEditingRow schema property
+                        //turns true when edit button is clicked
+                        // when true it will change row into 
+                        //editable input fields that will
+                        //update database when save is clicked
+                        currentlyEditingRow: { 
+                            type: Boolean,
+                            default: false,
+                        },
+                    </code>     
                 });
-            </pre>
+        </pre>
         <div>
             <h2>Preview DOM Table:</h2>
             <p>Edit and/or Delete buttons will not function in preview</p>
@@ -99,56 +113,58 @@
                     </tr>
                     <tr>
                         <td ng-if="ic.formInputs.hasEditButtons">
-                            <span class="glyphicon glyphicon-pencil"></span>
+                            <button>edit</button>
                         </td>
                         <td ng-repeat="property in ic.formInputs.tableProperties">{{property.propertyType}}</td>
                         <td ng-if="ic.formInputs.hasDeleteButtons">
-                            <span class="glyphicon glyphicon-minus"></span>
+                            <button>X</button>
                         </td>
                     </tr>
                     <tr>
                         <td ng-if="ic.formInputs.hasEditButtons">
-                            <span class="glyphicon glyphicon-pencil"></span>
+                            <button>edit</button>
                         </td>
                         <td ng-repeat="property in ic.formInputs.tableProperties">{{property.propertyType}}</td>
                         <td ng-if="ic.formInputs.hasDeleteButtons">
-                            <span class="glyphicon glyphicon-minus"></span>
+                            <button>X</button>
                         </td>
                     </tr>
                     <tr>
                         <td ng-if="ic.formInputs.hasEditButtons">
-                            <span class="glyphicon glyphicon-pencil"></span>
+                            <button>edit</button>
                         </td>
                         <td ng-repeat="property in ic.formInputs.tableProperties">{{property.propertyType}}</td>
                         <td ng-if="ic.formInputs.hasDeleteButtons">
-                            <span class="glyphicon glyphicon-minus"></span>
+                            <button>X</button>
                         </td>
                     </tr>
                 </tbody>
             </table>
             <div ng-if="ic.formInputs.hasInputForm">
-                    <h2>Preview Input Form:</h2>
-                    <p>Input form fields and buttons will not function in preview</p>
-                    <label for=""></label>
-                    <table name="inputFormPreview">
-                        <tr ng-repeat="property in ic.formInputs.tableProperties">
-                            <td><label for="">{{property.tableHeader}}</label></td>
-                            <td> 
-                                <input type="text" ng-if="property.propertyType=='String'">
-                                <input type="number" ng-if="property.propertyType=='Number'">
-                                <input type="checkbox" ng-if="property.propertyType=='Boolean'"> 
-                                <input type="date" ng-if="property.propertyType=='Date'">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>
-                                <button>Submit</button>
-                            </td>
-                        </tr>
-                    </table>
-                    
-                    
+                <h2>Preview Input Form:</h2>
+                <p>Input form fields and buttons will not function in preview</p>
+                <label for=""></label>
+                <table name="inputFormPreview">
+                    <tr ng-repeat="property in ic.formInputs.tableProperties">
+                        <td>
+                            <label for="">{{property.tableHeader}}</label>
+                        </td>
+                        <td>
+                            <input type="text" ng-if="property.propertyType=='String'">
+                            <input type="number" ng-if="property.propertyType=='Number'">
+                            <input type="checkbox" ng-if="property.propertyType=='Boolean'">
+                            <input type="date" ng-if="property.propertyType=='Date'">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <button>Submit</button>
+                        </td>
+                    </tr>
+                </table>
+
+
             </div>
         </div>
 

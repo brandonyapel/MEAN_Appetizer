@@ -7,10 +7,10 @@
         <section ng-repeat="code in mc.code.list">
 
             <h2>{{code.fileName+code.filetype}}</h2>
-            <button type="button" class="btn btn-default btn-sm" ng-click="mc.copyCode(code.id)">
+            <button type="button" class="btn btn-info btn-sm" ng-click="mc.copyCode(code.id)">
                 <span class="glyphicon glyphicon-copy"></span> Copy
             </button>
-            <button type="button" class="btn btn-default btn-sm" ng-click="mc.downloadCodeBlock(code)">
+            <button type="button" class="btn btn-info btn-sm" ng-click="mc.downloadCodeBlock(code)">
                 <span class="glyphicon glyphicon-download-alt"></span> Download
             </button>
 

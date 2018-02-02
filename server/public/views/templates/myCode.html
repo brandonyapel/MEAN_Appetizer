@@ -4,6 +4,7 @@
         <label for="projectName">Project Name:</label>
         <input name="projectName" type="text" class="form-group" placeholder="Project Name" ng-model="mc.projectName">
         <hr>
+        
         <section ng-repeat="code in mc.code.list">
 
             <h2>{{code.fileName+code.filetype}}</h2>
@@ -17,31 +18,31 @@
             <textarea id="{{code.id}}" class="form-control" rows="10" placeholder="empty code file" ng-model="code.codestring"></textarea>
             <hr>
         </section>
-        
+
         <br>
+       
+            <table class="table container">
+                <tr>
+                    <th>
+                        <button class="btn btn-info btn-lg">
+                            <span class="glyphicon glyphicon-trash"></span> Trash Project
+                        </button>
+                    </th>
 
-        <table class="table container">
-            <tr>
-                <th>
-                    <button class="btn btn-info btn-lg">
-                        <span class="glyphicon glyphicon-trash"></span> Trash Project
-                    </button>
-                </th>
+                    <th>
+                        <button class="btn btn-info btn-lg" ng-click="mc.saveNewProject(mc.projectName,mc.code.list)">
+                            <span class="glyphicon glyphicon-floppy-disk"></span> Save Project
+                        </button>
+                    </th>
 
-                <th>
-                    <button class="btn btn-info btn-lg" ng-click="mc.saveNewProject(mc.projectName,mc.code.list)">
-                        <span class="glyphicon glyphicon-floppy-disk"></span> Save Project
-                    </button>
-                </th>
-
-                <th>
-                    <button class="btn btn-info btn-lg" ng-click="mc.downloadProject(mc.code.list)">
-                        <span class="glyphicon glyphicon-download-alt"></span> Download Project
-                    </button>
-                </th>
-            </tr>
-        </table>
-
+                    <th>
+                        <button class="btn btn-info btn-lg" ng-click="mc.downloadProject(mc.code.list)">
+                            <span class="glyphicon glyphicon-download-alt"></span> Download Project
+                        </button>
+                    </th>
+                </tr>
+            </table>
+        
 
     </div>
 </div>

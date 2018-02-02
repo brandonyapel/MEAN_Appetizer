@@ -25,7 +25,7 @@ myApp.service('CodeService', ['$http', function ($http) {
     //function to get Base project Template from db and to replace placeholders with forminputs
     self.getBaseCode = function (formInputs) {
         console.log("getBaseCode");
-        console.log('formInputs',formInputs);
+        console.log('formInputs', formInputs);
         $http({
             method: 'GET',
             url: '/code/base'
@@ -51,26 +51,26 @@ myApp.service('CodeService', ['$http', function ($http) {
                 console.log(self.code.list[codeListIndex].fileName)
                 console.log(formInputs.tableName)
                 //cannot replace null to avoid error only replace filenames that are not null
-                if(self.code.list[codeListIndex].fileName != null){
+                if (self.code.list[codeListIndex].fileName != null) {
                     console.log('in if filename statement')
-                    self.code.list[codeListIndex].fileName = self.code.list[codeListIndex].fileName.replace(/xxtableNamexx/g,formInputs.tableName);
-                    self.code.list[codeListIndex].fileName = self.code.list[codeListIndex].fileName.replace(/xxprojectNamexx/g,formInputs.projectName);
+                    self.code.list[codeListIndex].fileName = self.code.list[codeListIndex].fileName.replace(/xxtableNamexx/g, formInputs.tableName);
+                    self.code.list[codeListIndex].fileName = self.code.list[codeListIndex].fileName.replace(/xxprojectNamexx/g, formInputs.projectName);
                 };
                 //cannot replace null to avoid error only replace codestrings that are not null
-                if(self.code.list[codeListIndex].codestring != null){
+                if (self.code.list[codeListIndex].codestring != null) {
                     console.log('in if codestring statement')
-                    self.code.list[codeListIndex].codestring = self.code.list[codeListIndex].codestring.replace(/xxtableNamexx/g,formInputs.tableName);
-                    self.code.list[codeListIndex].codestring = self.code.list[codeListIndex].codestring.replace(/xxprojectNamexx/g,formInputs.projectName);
-                    self.code.list[codeListIndex].codestring = self.code.list[codeListIndex].codestring.replace(/xxtableSchemaxx/g,tableSchema);
-                    self.code.list[codeListIndex].codestring = self.code.list[codeListIndex].codestring.replace(/xxtableFormInputsxx/g,tableFormInputsHTML);
-                    self.code.list[codeListIndex].codestring = self.code.list[codeListIndex].codestring.replace(/xxtableDOMHeaderHTMLxx/g,tableDOMHeaderHTML);
-                    self.code.list[codeListIndex].codestring = self.code.list[codeListIndex].codestring.replace(/xxtableDataHTMLxx/g,tableDataHTML);
-                    self.code.list[codeListIndex].codestring = self.code.list[codeListIndex].codestring.replace(/xxdeleteRowControllerxx/g,deleteRowControllerJS);
-                    self.code.list[codeListIndex].codestring = self.code.list[codeListIndex].codestring.replace(/xxdeleteRowServicexx/g,deleteRowServiceJS);
-                    self.code.list[codeListIndex].codestring = self.code.list[codeListIndex].codestring.replace(/xxdeleteRowRoutexx/g,deleteRowRouteJS);
-                    self.code.list[codeListIndex].codestring = self.code.list[codeListIndex].codestring.replace(/xxeditRowControllerxx/g,editRowControllerJS);
-                    self.code.list[codeListIndex].codestring = self.code.list[codeListIndex].codestring.replace(/xxeditRowServicexx/g,editRowServiceJS);
-                    self.code.list[codeListIndex].codestring = self.code.list[codeListIndex].codestring.replace(/xxeditRowRoutexx/g,editRowRouteJS);
+                    self.code.list[codeListIndex].codestring = self.code.list[codeListIndex].codestring.replace(/xxtableNamexx/g, formInputs.tableName);
+                    self.code.list[codeListIndex].codestring = self.code.list[codeListIndex].codestring.replace(/xxprojectNamexx/g, formInputs.projectName);
+                    self.code.list[codeListIndex].codestring = self.code.list[codeListIndex].codestring.replace(/xxtableSchemaxx/g, tableSchema);
+                    self.code.list[codeListIndex].codestring = self.code.list[codeListIndex].codestring.replace(/xxtableFormInputsxx/g, tableFormInputsHTML);
+                    self.code.list[codeListIndex].codestring = self.code.list[codeListIndex].codestring.replace(/xxtableDOMHeaderHTMLxx/g, tableDOMHeaderHTML);
+                    self.code.list[codeListIndex].codestring = self.code.list[codeListIndex].codestring.replace(/xxtableDataHTMLxx/g, tableDataHTML);
+                    self.code.list[codeListIndex].codestring = self.code.list[codeListIndex].codestring.replace(/xxdeleteRowControllerxx/g, deleteRowControllerJS);
+                    self.code.list[codeListIndex].codestring = self.code.list[codeListIndex].codestring.replace(/xxdeleteRowServicexx/g, deleteRowServiceJS);
+                    self.code.list[codeListIndex].codestring = self.code.list[codeListIndex].codestring.replace(/xxdeleteRowRoutexx/g, deleteRowRouteJS);
+                    self.code.list[codeListIndex].codestring = self.code.list[codeListIndex].codestring.replace(/xxeditRowControllerxx/g, editRowControllerJS);
+                    self.code.list[codeListIndex].codestring = self.code.list[codeListIndex].codestring.replace(/xxeditRowServicexx/g, editRowServiceJS);
+                    self.code.list[codeListIndex].codestring = self.code.list[codeListIndex].codestring.replace(/xxeditRowRoutexx/g, editRowRouteJS);
                 }
 
 
@@ -78,7 +78,7 @@ myApp.service('CodeService', ['$http', function ($http) {
         });
     }
 
-    
+
     //function to copy code string in each code block
     self.copyCode = function (codeID) {
         var copyText = document.getElementById(codeID);
@@ -196,12 +196,15 @@ myApp.service('CodeService', ['$http', function ($http) {
         zip.generateAsync({ type: "blob" })
             .then(function (content) {
                 // see FileSaver.js
-                saveAs(content, self.projectName+".zip");
+                saveAs(content, self.projectName + ".zip");
             });
     };
 
     //function to save New Project to database
     self.saveNewProject = function (/* self.projectName */projectName,/* self.code.list */codeList) {
+
+        
+
         //post new project using user_id and projectName to Projects
         self.postNewProject = function (projectName) {
             $http({
@@ -214,6 +217,7 @@ myApp.service('CodeService', ['$http', function ($http) {
             })
         };
 
+        self.postNewProject(projectName);
 
         //get project and assign to self.projectName
         self.getProject = function (project) {
@@ -239,9 +243,11 @@ myApp.service('CodeService', ['$http', function ($http) {
                     data: { currentProject: currentProject, file: codeList[codeListIndex] },
                 }).then(function (response) {
                     console.log('response:', response);
+                    if (codeListIndex == codeList.length - 1) {
+                        self.getProjectFiles(self.currentProject)
+                    }
                 })
             }
-            self.getProjectFiles(self.currentProject);
 
         };
 
@@ -261,21 +267,24 @@ myApp.service('CodeService', ['$http', function ($http) {
         //Assign values of files get request too self.code.list
 
 
-        self.postNewProject(projectName);
+
     };
 
-    self.getProjectFiles = function (/* self.currentProject */ currentProject) {
-        console.log("getProjectFiles()");
+    self.getSavedProjectFiles = function (currentProjectID) {
+        console.log(`getSavedProjectFiles(${currentProjectID})`);
         self.code.list = {};
         $http({
             method: 'GET',
             url: '/project/files',
-            params: { projectID: currentProject.id }
+            params: { projectID: currentProjectID }
         }).then(function (response) {
             console.log('response', response);
             self.code.list = response.data;
+
         });
+
     };
+
 
 
 }]);

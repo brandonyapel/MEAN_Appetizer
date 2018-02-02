@@ -119,7 +119,8 @@ router.post('/', function (req, res) {
 });
 
 router.post('/files', function (req, res) {
-    console.log('/project/file post ');
+    console.log('/project/files post ');
+    console.log(req.body)
     var file = req.body.file
     var currentProject = req.body.currentProject;
     //Attempt to connect to database
@@ -132,8 +133,8 @@ router.post('/files', function (req, res) {
             //We connected to the database!!!
             //Now, we're going to GET things from the DB
             //second param array blocks Bobby Drop Table
-            client.query(`INSERT INTO files(project_id,filename,filetype,codestring,directory)
-            VALUES 	($1, $2, $3, $4, $5);`, [currentProject.id, file.filename, file.filetype, file.codestring, file.directory], function (errorMakingQuery, result) {
+            client.query(`INSERT INTO files(project_id,"fileName",filetype,codestring,directory)
+            VALUES 	($1, $2, $3, $4, $5);`, [currentProject.id, file.fileName, file.filetype, file.codestring, file.directory], function (errorMakingQuery, result) {
                     done();
                     if (errorMakingQuery) {
                         //Query failed. Did you test it in Postico? If so

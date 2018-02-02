@@ -1,10 +1,11 @@
 <div ng-include="'views/partials/nav.html'"></div>
 <div class="container">
   <div class="content">
+    <div class="projectTable">
     <table class="table table-hover table-striped">
       <thead>
         <tr>
-          <th>Projects</th>
+          <th>My Projects</th>
           <th></th>
           <th></th>
           <th></th>
@@ -14,9 +15,9 @@
         <tr ng-repeat="project in pc.myProjects.list">
           <td>{{project.projectname}}</td>
           <td>
-            <button class="btn btn-info btn-sm">
+            <a href="#/myCode/getSavedProjectFiles/{{project.id}}" class="btn btn-info btn-sm">
               <span class="glyphicon glyphicon-eye-open"></span>
-            </button>
+            </a>
           </td>
           <td>
             <button class="btn btn-info btn-sm" ng-click="pc.downloadProjectClick(project)">
@@ -31,7 +32,8 @@
         </tr>
       </tbody>
     </table>
-    <a href="#/myCode" class="btn btn-info btn-lg">Generate Quick Project</a>
+  </div>
+    <a href="#/myCode/getCode/0"  class="btn btn-info btn-lg">Generate Quick Project</a>
     <a href="#/input" class="btn btn-info btn-lg">Create Advanced Starter Project</a>
     
     

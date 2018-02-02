@@ -31,7 +31,7 @@ myApp.config(function($routeProvider, $locationProvider) {
         }
       }
     })
-    .when('/myCode', {
+    .when('/myCode/:getRequest/:projectID', {
       templateUrl: '/views/templates/myCode.html',
       controller: 'myCodeController as mc',
       resolve: {

@@ -15,7 +15,7 @@ projectname VARCHAR(100)
 CREATE TABLE files(
 id SERIAL PRIMARY KEY,
 project_id INT,
-filename VARCHAR(100),
+fileName VARCHAR(100),
 filetype VARCHAR(100),
 code VARCHAR(3000)
 );

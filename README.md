@@ -1,5 +1,41 @@
+# Mean Appetizer
 
-Features
+## Created by Brandon Yapel
+
+### Built With
+Postgres SQL
+Express
+Angular
+Node.js
+MongoDB
+FileSaver.js
+JSZip
+Passport-local 
+
+### Getting Started
+
+** Prerequisites **
+Node.js
+mongo
+SQL
+
+** Installing **
+
+teps to get the development environment running.
+
+Download this project.
+``` npm install ```
+``` npm start ```
+
+## Screen Shots
+
+![My Projects](./demo-images/My_Projects.png)
+![Advanced Options](./demo-images/Advanced_Options.png)
+![Code Review](./demo-images/Code_Review.png)
+
+## Documentation
+
+** Features **
 [X]Feature-Registration using passport
 [X]Feature-User Home Page with projects
 [X]Feature- NewProject Ability to create new project
@@ -27,3 +63,14 @@ Features
 [ ]Feature-add multiple views
 [ ]Feature-use Github API for login
 [ ]Feature-post project to Github
+
+## Deployment
+This project is currently not deployed.  The app runs using a Postgres SQL database.  The database.sql file is currently incomplete since the database.  I intend deploy a live version of this app by May 2018.
+
+## Author
+
+Brandon Yapel
+
+## Acknowledgements
+
+Thank you to Prime Digital Academy for teaching me how to code in their Full Stack Engineering Bootcamp.  I dreamed up this project for my Individual/Thesis Project for the Bootcamp.  I intend to continue my developing this app and making it available to assist students of Prime to fullfill their dreams of creating full stack apps.

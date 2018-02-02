@@ -106,8 +106,15 @@ img {
 }
 
 
+.dbTable{
+    height: 200px;
+    overflow: scroll;
+}
 
-
+.projectTable{
+    height: 400px;
+    overflow:scroll;
+}
 
 
 textarea{

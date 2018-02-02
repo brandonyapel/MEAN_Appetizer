@@ -9,16 +9,15 @@
         <label for="TableName">tableName:</label>
         <img id="camelCase" data-toggle="tool" src="../images/camelCase.png" alt="">
         <input class="form-control" type="text" ng-model="ic.formInputs.tableName" placeholder="Table Name" name="TableName">
-        <p>tableName is used in your code to construct variables and file names.  Recommended to be written in camelCase</p>
+        <p>tableName is used in your code to construct variables and file names. Recommended to be written in camelCase</p>
         <br>
         <br>
 
         <label for="dbTable">Database and DOM Columns</label>
-        <div name="dbTable">
-
-            <button ng-click="ic.addProperty()">
-                <span class="glyphicon glyphicon-plus"></span>
-            </button>
+        <button ng-click="ic.addProperty()">
+            <span class="glyphicon glyphicon-plus"></span>
+        </button>
+        <div name="dbTable" class="dbTable border border-dark">
             <table class="table table-striped table-hover">
                 <tr>
                     <th>
@@ -75,13 +74,14 @@
         <input class="form-check-input" type="checkbox" value="" ng-model="ic.formInputs.hasInputForm" name="inputForm">
         <label for="inputForm">Input Row Form</label>
         <br>
-        <a href="#/myCode" class="btn btn-info btn-lg">
+        <br>
+        <a href="#/myCode/getBaseCode/0" class="btn btn-info">
             Generate Project
         </a>
-        <a href="#/myProjects" class="btn btn-info btn-lg">
+        <a href="#/myProjects">
             Cancel
         </a>
-      
+
     </div>
 
     <div class="col-lg-6">

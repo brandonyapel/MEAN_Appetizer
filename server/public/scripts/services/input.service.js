@@ -3,30 +3,12 @@ myApp.service('InputService', function ($http, $location) {
     let self = this;
 
     self.formInputs = {
-        projectName: 'dinosaur',
-        tableName: 'dinosaur',
-        hasDeleteButtons: true,
-        hasEditButtons: true,
+        projectName: '',
+        tableName: '',
+        hasDeleteButtons: false,
+        hasEditButtons: false,
         hasInputForm: false,
-        tableProperties: [
-            {
-                tableHeader: 'Name',
-                schemaProperty: 'name',
-                propertyType: 'String'
-            }, {
-                tableHeader: 'Finger Count',
-                schemaProperty: 'fingerCount',
-                propertyType: 'Number'
-            }, {
-                tableHeader: 'Is Extinct?',
-                schemaProperty: 'isExtinct',
-                propertyType: 'Boolean'
-            }, {
-                tableHeader: 'Birthday',
-                schemaProperty: 'birthday',
-                propertyType: 'Date'
-            },
-        ],
+        tableProperties: [],
         tableSchema() {
             let schema = '';
             let schemaString = ''

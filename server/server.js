@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({extended: true, limit: '1000mb'}));
 
 
 // Serve back static files
-app.use(express.static('./server/public'));
+app.use(express.static('server/public'));
 
 // Passport Session Configuration //
 app.use(sessionConfig);

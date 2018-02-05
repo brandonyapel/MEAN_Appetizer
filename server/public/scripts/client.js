@@ -23,7 +23,7 @@ myApp.config(function($routeProvider, $locationProvider) {
       }
     })
     .when('/myProjects', {
-      templateUrl: '/views/templates/myProjects.html',
+      templateUrl: '/views/templates/mytaco.html',
       controller: 'myProjectsController as pc',
       resolve: {
         getuser : function(UserService) {
